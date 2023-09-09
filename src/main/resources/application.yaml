@@ -1,0 +1,30 @@
+# configure your datasource
+quarkus:
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: root
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/reportdb
+  hibernate-orm:
+    database:
+      generation: update
+
+  # configure quarkus http
+  http:
+    port: 8081
+
+# Kafka configs
+mp:
+  messaging:
+    incoming:
+      proposal:
+        connector: smallrye-kafka
+        topic: proposal
+      quotation:
+        connector: smallrye-kafka
+        topic: quotation
+    connector:
+      smallrye-kafka:
+        bootstrap:
+          servers: localhost:9092
